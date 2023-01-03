@@ -17,7 +17,6 @@ function VisualizadorVehiculo({imagen,nombre,info,info2}){
         <div >
           <Head>
             <title>{nombre}</title>
-            <meta property="og:site_name" content="YouTube"/>
             <meta property="og:url" content="https://edisciplinas.usp.br/pluginfile.php/5196097/mod_resource/content/1/Teste.mp4"/>
             <meta property="og:title" content={nombre}  />
             <meta property="og:image" content={imagen}/>
@@ -25,11 +24,6 @@ function VisualizadorVehiculo({imagen,nombre,info,info2}){
             <meta property="og:image:height" content="720"/>
             <meta property="og:description"  content={aux}/>
             <meta property="og:type" content="video.other"/>
-            <meta property="og:video:url" content="https://edisciplinas.usp.br/pluginfile.php/5196097/mod_resource/content/1/Teste.mp4"/>
-            <meta property="og:video:type" content="text/html"/>
-            <meta property="og:video:width" content="640"/>
-            <meta property="og:video:height" content="360"/>
-            <meta property="og:video:tag" content="abc"/>
             <link rel="icon" href="/favicon.ico" />
           </Head>
             <main >
