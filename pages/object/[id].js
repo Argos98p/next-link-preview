@@ -23,7 +23,6 @@ function VisualizadorVehiculo({imagen,nombre,info,info2}){
             <meta property="og:image:width" content="1280"/>
             <meta property="og:image:height" content="720"/>
             <meta property="og:description"  content={aux}/>
-            <meta property="og:type" content="video.other"/>
             <link rel="icon" href="/favicon.ico" />
           </Head>
             <main >
