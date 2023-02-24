@@ -58,7 +58,7 @@ export const getServerSideProps = async (context) => {
     return {
       props:{
         imagen:imagen,
-        nombre:data.nombre,
+        nombre:aux,
         info:data.info.split(",")[0],
         info2:data.info.split(",")[1]
       }
