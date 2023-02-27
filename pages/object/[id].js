@@ -18,7 +18,7 @@ function VisualizadorVehiculo({imagen,nombre,info,info2}){
           <Head>
             <title>{nombre}</title>
             <meta property="og:url" content="https://edisciplinas.usp.br/pluginfile.php/5196097/mod_resource/content/1/Teste.mp4"/>
-            <meta property="og:title" content={nombre}  />
+            <meta property="og:title" content={aux}  />
             <meta property="og:image" content={imagen}/>
             <meta property="og:image:width" content="1280"/>
             <meta property="og:image:height" content="720"/>
@@ -58,7 +58,7 @@ export const getServerSideProps = async (context) => {
     return {
       props:{
         imagen:imagen,
-        nombre:aux,
+        nombre:data.info.split(",")[0]+ " "+data.info.split(",")[1],
         info:data.info.split(",")[0],
         info2:data.info.split(",")[1]
       }
