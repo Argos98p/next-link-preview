@@ -41,7 +41,7 @@ export const getServerSideProps = async (context) => {
     try {
        res = await fetch(`https://3dmotores.com/objects/getobject?idobjeto=${id}`);
        data = await res.json();
-       imagen = `https://3dmotores.com/images/getimage?path=/${id}/${data.escenas["0"].imagenes["1"].path}`
+       imagen = `https://3dmotores.com/images/getimage?path=/${id}/${data.escenas["0"].imagenes["25"].path}`
   
     } catch (error) {
       imagen = "https://i0.wp.com/learn.onemonth.com/wp-content/uploads/2017/08/1-10.png?fit=845%2C503&ssl=1"
