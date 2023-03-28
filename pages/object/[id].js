@@ -18,7 +18,7 @@ function VisualizadorVehiculo({imagen,nombre,info,info2}){
         <div >
           <Head>
             <title>{nombre}</title>
-            <meta property="og:url" content="https://www.3dmotores.com"/>
+              <meta property="og:url" content="https://edisciplinas.usp.br/pluginfile.php/5196097/mod_resource/content/1/Teste.mp4"/>
             <meta property="og:title" content={aux}  />
             <meta property="og:image" content={imagen}/>
             <meta property="og:image:width" content="400"/>
