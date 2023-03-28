@@ -42,7 +42,7 @@ export const getServerSideProps = async (context) => {
        res = await fetch(`https://3dmotores.com/objects/getobject?idobjeto=${id}`);
        data = await res.json();
        //imagen = `https://3dmotores.com/images/getimage?path=/${id}/${data.escenas["0"].imagenes["25"].path}`;
-       let aux2 =   `${data.escenas["0"].imagenes["25"].path}`.split("/")[0];
+       let aux2 =   `${data.escenas["0"].imagenes["25"].path}`.split("/")[1];
        //let aux = imagen.split(`$id`)
         imagen=`https://3dmotores.com/images/getimage?path=/${id}/${aux2}/preview/preview.jpg`;
         console.log(data);
