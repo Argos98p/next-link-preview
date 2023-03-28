@@ -2,12 +2,17 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 
 import { useEffect } from 'react';
+import {console} from "next/dist/compiled/@edge-runtime/primitives/console";
 
 function VisualizadorVehiculo({imagen,nombre,info,info2}){
     const router = useRouter();
     let aux= info + " "+ info2;
 
 
+    console.log(imagen);
+    console.log(nombre);
+    console.log(info);
+    console.log(info2);
 
     useEffect(() => {
         window.location.href = `https://3dmotores.com/visualizador/view/${router.query.id}`;
@@ -45,9 +50,7 @@ export const getServerSideProps = async (context) => {
        let aux2 =   `${data.escenas["0"].imagenes["25"].path}`.split("/")[1];
        //let aux = imagen.split(`$id`)
         imagen=`https://3dmotores.com/images/getimage?path=/${id}/${aux2}/preview/preview.jpg`;
-        console.log(data);
-        console.log(imagen);
-        console.log(`${data.escenas["0"].imagenes["25"].path}`.split("/"))
+
     } catch (error) {
       imagen = "https://i0.wp.com/learn.onemonth.com/wp-content/uploads/2017/08/1-10.png?fit=845%2C503&ssl=1"
       return{
