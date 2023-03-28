@@ -7,12 +7,8 @@ import {console} from "next/dist/compiled/@edge-runtime/primitives/console";
 function VisualizadorVehiculo({imagen,nombre,info,info2}){
     const router = useRouter();
     let aux= info + " "+ info2;
-
-
     console.log(imagen);
     console.log(nombre);
-    console.log(info);
-    console.log(info2);
 
     useEffect(() => {
         window.location.href = `https://3dmotores.com/visualizador/view/${router.query.id}`;
