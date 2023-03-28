@@ -7,8 +7,6 @@ function VisualizadorVehiculo({imagen,nombre,info,info2}){
     const router = useRouter();
     let aux= info + " "+ info2;
 
-
-
     useEffect(() => {
         window.location.href = `https://3dmotores.com/visualizador/view/${router.query.id}`;
       }, []);
@@ -40,9 +38,10 @@ export const getServerSideProps = async (context) => {
     let infoObjecto=[];
     try {
        res = await fetch(`https://3dmotores.com/objects/getinfo?idobjeto${id}`);
-       data = await res.text()
-        infoObjecto = data.split(",")
-       imagen = data.split(",")[14]
+       data = await res.text();
+       infoObjecto = data.split(",");
+       console.log(data);
+       imagen = data.split(",")[14];
   
     } catch (error) {
       imagen = "https://i0.wp.com/learn.onemonth.com/wp-content/uploads/2017/08/1-10.png?fit=845%2C503&ssl=1"
@@ -55,6 +54,7 @@ export const getServerSideProps = async (context) => {
         }
       }
     }
+
    
     return {
       props:{
