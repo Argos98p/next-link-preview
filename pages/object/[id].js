@@ -37,7 +37,7 @@ export const getServerSideProps = async (context) => {
     const id = context.params.id;
     let  res = {};
     let data = {};
-    let imagen = "";
+    let imagen = "https://i0.wp.com/learn.onemonth.com/wp-content/uploads/2017/08/1-10.png?fit=845%2C503&ssl=1";
     try {
        res = await fetch(`https://3dmotores.com/objects/getobject?idobjeto=${id}`);
        data = await res.json();
