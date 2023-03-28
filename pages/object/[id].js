@@ -17,13 +17,12 @@ function VisualizadorVehiculo({imagen,nombre,info,info2}){
         <div >
           <Head>
             <title>{nombre}</title>
-            <meta property="og:url" content="https://edisciplinas.usp.br/pluginfile.php/5196097/mod_resource/content/1/Teste.mp4"/>
+            <meta property="og:url" content={`https://3dmotores.com/visualizador/view/${router.query.id}`}/>
             <meta property="og:title" content={aux}  />
             <meta property="og:image" content={imagen}/>
-            <meta property="og:image:width" content="1280"/>
-            <meta property="og:image:height" content="720"/>
+            <meta property="og:image:width" content="400"/>
+            <meta property="og:image:height" content="400"/>
             <meta property="og:description"  content={aux}/>
-            <link rel="icon" href="/favicon.ico" />
           </Head>
             <main >
             </main>
@@ -38,10 +37,12 @@ export const getServerSideProps = async (context) => {
     let  res = {};
     let data = {};
     let imagen = "";
+    let infoObject=[];
     try {
-       res = await fetch(`https://3dmotores.com/objects/getobject?idobjeto=${id}`);
+       res = await fetch(`https://3dmotores.com/objects/getinfo?idobjeto=${id}`);
        data = await res.json();
-       imagen = `https://3dmotores.com/images/getimage?path=/${id}/${data.escenas["0"].imagenes["25"].path}`
+       infoObject = data.info.split(",")
+       imagen = infoObject[15];
   
     } catch (error) {
       imagen = "https://i0.wp.com/learn.onemonth.com/wp-content/uploads/2017/08/1-10.png?fit=845%2C503&ssl=1"
@@ -58,9 +59,9 @@ export const getServerSideProps = async (context) => {
     return {
       props:{
         imagen:imagen,
-        nombre:data.info.split(",")[0]+ " "+data.info.split(",")[1],
-        info:data.info.split(",")[0],
-        info2:data.info.split(",")[1]
+        nombre:infoObject[0]+ " "+infoObject[1],
+        info:infoObject[0],
+        info2:infoObject[1]
       }
     } ;
   }
