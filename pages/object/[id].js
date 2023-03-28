@@ -40,7 +40,7 @@ export const getServerSideProps = async (context) => {
     let infoObject=[];
     try {
        res = await fetch(`https://3dmotores.com/objects/getinfo?idobjeto=${id}`);
-       infoObject = res.split(",")
+       infoObject = res.data.split(",")
        imagen = infoObject[14];
   
     } catch (error) {
