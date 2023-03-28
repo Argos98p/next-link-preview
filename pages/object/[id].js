@@ -45,7 +45,8 @@ export const getServerSideProps = async (context) => {
        let aux2 =   `${data.escenas["0"].imagenes["25"].path}`.split("/")[0];
        //let aux = imagen.split(`$id`)
         imagen=`https://3dmotores.com/images/getimage?path=/${id}/${aux2}/preview/preview.jpg`;
-  
+        console.log(data);
+        console.log(imagen);
     } catch (error) {
       imagen = "https://i0.wp.com/learn.onemonth.com/wp-content/uploads/2017/08/1-10.png?fit=845%2C503&ssl=1"
       return{
