@@ -17,7 +17,7 @@ function VisualizadorVehiculo({imagen,nombre,info,info2}){
         <div >
           <Head>
             <title>{nombre}</title>
-            <meta property="og:url" content={`https://3dmotores.com/visualizador/view/${router.query.id}`}/>
+            <meta property="og:url" content="https://3dmotores.com"/>
             <meta property="og:title" content={aux}  />
             <meta property="og:image" content={imagen}/>
             <meta property="og:image:width" content="400"/>
@@ -36,12 +36,11 @@ export const getServerSideProps = async (context) => {
     const id = context.params.id;
     let  res = {};
     let data = {};
-    let imagen = "";
+    let imagen = "https://i0.wp.com/learn.onemonth.com/wp-content/uploads/2017/08/1-10.png?fit=845%2C503&ssl=1";
     let infoObject=[];
     try {
        res = await fetch(`https://3dmotores.com/objects/getinfo?idobjeto=${id}`);
-       data = await res.json();
-       infoObject = data.info.split(",")
+       infoObject = res.split(",")
        imagen = infoObject[14];
   
     } catch (error) {
