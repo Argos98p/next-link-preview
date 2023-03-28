@@ -17,7 +17,7 @@ function VisualizadorVehiculo({imagen,nombre,info,info2}){
         <div >
           <Head>
             <title>{nombre}</title>
-            <meta property="og:url" content="https://3dmotores.com"/>
+            <meta property="og:url" content={`https://3dmotores.com/visualizador/view/${router.query.id}`}/>
             <meta property="og:title" content={aux}  />
             <meta property="og:image" content={imagen}/>
             <meta property="og:image:width" content="400"/>
@@ -37,11 +37,12 @@ export const getServerSideProps = async (context) => {
     let  res = {};
     let data = {};
     let imagen = "https://i0.wp.com/learn.onemonth.com/wp-content/uploads/2017/08/1-10.png?fit=845%2C503&ssl=1";
-    let infoObject=[];
+    let infoObjecto=[];
     try {
-       res = await fetch(`https://3dmotores.com/objects/getinfo?idobjeto=${id}`);
-       infoObject = res.data.split(",")
-       imagen = infoObject[14];
+       res = await fetch(`https://3dmotores.com/objects/getinfo?idobjeto${id}`);
+       data = await res.text()
+        infoObjecto = data.split(",")
+       imagen = data.split(",")[14]
   
     } catch (error) {
       imagen = "https://i0.wp.com/learn.onemonth.com/wp-content/uploads/2017/08/1-10.png?fit=845%2C503&ssl=1"
@@ -58,9 +59,9 @@ export const getServerSideProps = async (context) => {
     return {
       props:{
         imagen:imagen,
-        nombre:infoObject[0]+ " "+infoObject[1],
-        info:infoObject[0],
-        info2:infoObject[1]
+        nombre:data.split(",")[0]+ " "+data.split(",")[1],
+        info:data.split(",")[0],
+        info2:data.split(",")[1]
       }
     } ;
   }
