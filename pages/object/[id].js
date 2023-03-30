@@ -52,11 +52,12 @@ export const getServerSideProps = async (context) => {
     let  res = {};
     let data = {};
     let imagen = "https://i0.wp.com/learn.onemonth.com/wp-content/uploads/2017/08/1-10.png?fit=845%2C503&ssl=1";
+    let aux2="";
     try {
        res = await fetch(`https://3dmotores.com/objects/getobject?idobjeto=${id}`);
        data = await res.json();
 
-       let aux2 =   `${data.escenas["0"].imagenes["25"].path}`.split("/")[1];
+        aux2 =   `${data.escenas["0"].imagenes["25"].path}`.split("/")[1];
 
         imagen=`https://3dmotores.com/images/getimage?path=/${id}/${aux2}/preview/preview.jpg`;
 
