@@ -74,7 +74,7 @@ export const getServerSideProps = async (context) => {
       }
     }
 
-    function checkImage(url) {
+    function   checkImage(url)  {
         var request = new XMLHttpRequest();
         request.open("GET", url, true);
         request.send();
@@ -84,14 +84,15 @@ export const getServerSideProps = async (context) => {
             var status = request.status;
             if (request.status === 200) //if(statusText == OK)
             {
-                console.log("image exists");
+                return url;
             } else {
-                imagen = `https://3dmotores.com/images/getimage?path=/${id}/${data.escenas["0"].imagenes["25"].path}`
+               return  `https://3dmotores.com/images/getimage?path=/${id}/${data.escenas["0"].imagenes["25"].path}`
             }
         }
+        return "";
     }
 
-    checkImage(imagen);
+    imagen = checkImage(imagen);
 
 
     console.log(imagen);
