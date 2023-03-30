@@ -74,6 +74,7 @@ export const getServerSideProps = async (context) => {
     }
 
     function   checkImage(url)  {
+        console.log(`se verifca la siguiente imagen ${url}`)
         var request = new XMLHttpRequest();
         request.open("GET", url, true);
         request.send();
@@ -83,23 +84,25 @@ export const getServerSideProps = async (context) => {
             var status = request.status;
             if (request.status === 200) //if(statusText == OK)
             {
+                console.log(`la imagen ${url} existe `)
                 return url;
             } if(request.status === 404){
-               return  `https://3dmotores.com/images/getimage?path=/${id}/${data.escenas["0"].imagenes["25"].path}`
+                console.log(`la imagen ${url} NO existe `)
+               return  `https://3dmotores.com/images/getimage?path=${id}/${data.escenas["0"].imagenes["25"].path}`
             }
         }
-        return  `https://3dmotores.com/images/getimage?path=/${id}/${data.escenas["0"].imagenes["25"].path}`
+        return  `https://3dmotores.com/images/getimage?path=${id}/${data.escenas["0"].imagenes["25"].path}`
     }
 
-    imagen = checkImage(imagen);
+    var imagen2 =  checkImage(imagen);
 
 
-    console.log(imagen);
+    console.log(`la imagen q se va es ${imagen2}`)
 
    
     return {
       props:{
-        imagen:imagen,
+        imagen:imagen2,
         nombre:data.info.split(",")[0]+ " "+data.info.split(",")[1],
         info:data.info.split(",")[0],
         info2:data.info.split(",")[1]
