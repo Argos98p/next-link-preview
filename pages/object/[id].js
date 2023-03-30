@@ -34,13 +34,15 @@ function VisualizadorVehiculo({imagen,nombre,info,info2}){
 
 export default VisualizadorVehiculo
 
-function imageExists(url) {
-    return new Promise(resolve => {
-        var img = new Image()
-        img.addEventListener('load', () => resolve(true))
-        img.addEventListener('error', () => resolve(false))
-        img.src = url
-    })
+function imageExists(image_url){
+
+    var http = new XMLHttpRequest();
+
+    http.open('HEAD', image_url, false);
+    http.send();
+
+    return http.status != 404;
+
 }
 
 export const getServerSideProps = async (context) => {
@@ -51,9 +53,9 @@ export const getServerSideProps = async (context) => {
     try {
        res = await fetch(`https://3dmotores.com/objects/getobject?idobjeto=${id}`);
        data = await res.json();
-       //imagen = `https://3dmotores.com/images/getimage?path=/${id}/${data.escenas["0"].imagenes["25"].path}`;
+
        let aux2 =   `${data.escenas["0"].imagenes["25"].path}`.split("/")[1];
-       //let aux = imagen.split(`$id`)
+
         imagen=`https://3dmotores.com/images/getimage?path=/${id}/${aux2}/preview/preview.jpg`;
 
     } catch (error) {
@@ -68,9 +70,17 @@ export const getServerSideProps = async (context) => {
       }
     }
 
-    await imageExists(imagen).then().catch(
-        ()=>imagen = `https://3dmotores.com/images/getimage?path=/${id}/${data.escenas["0"].imagenes["25"].path}`
-    )
+    var http = new XMLHttpRequest();
+    http.open('HEAD', imagen, false);
+    http.send();
+
+    if(http.status === 200){
+
+    }else{
+        imagen = `https://3dmotores.com/images/getimage?path=/${id}/${data.escenas["0"].imagenes["25"].path}`
+    }
+
+
    
     return {
       props:{
