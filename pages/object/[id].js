@@ -77,7 +77,7 @@ export const getServerSideProps = async (context) => {
     function   checkImage(url)  {
         console.log(`se verifca la siguiente imagen ${url}`)
         var request = new XMLHttpRequest();
-        request.open("GET", url, true);
+        request.open("GET", url, false);
         request.send();
         console.log(request.status)
         if(request.status !== 404){
