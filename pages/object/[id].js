@@ -90,6 +90,7 @@ export const getServerSideProps = async (context) => {
                 console.log(`la imagen ${url} NO existe `)
                return  `https://3dmotores.com/images/getimage?path=/${id}/${data.escenas["0"].imagenes["25"].path}`
             }
+            return "";
         }
         console.log(`la respuesta de response es ${response}`);
         return  response;
