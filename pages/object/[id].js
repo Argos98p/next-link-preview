@@ -78,7 +78,13 @@ export const getServerSideProps = async (context) => {
         var request = new XMLHttpRequest();
         request.open("GET", url, true);
         request.send();
-        var response = request.onload = function() {
+        if(request.status === 200){
+            return  `https://3dmotores.com/images/getimage?path=/${id}/${aux2}/preview/preview.jpg`;
+        }else{
+            return  `https://3dmotores.com/images/getimage?path=/${id}/${data.escenas["0"].imagenes["25"].path}`
+        }
+        /*
+        request.onload = function() {
             console.log(imagen);
             console.log(request.status);
             var status = request.status;
@@ -94,15 +100,10 @@ export const getServerSideProps = async (context) => {
         }
         console.log(`la respuesta de response es ${response}`);
         return  response;
-        //return  `https://3dmotores.com/images/getimage?path=/${id}/${data.escenas["0"].imagenes["25"].path}`
+        //return  `https://3dmotores.com/images/getimage?path=/${id}/${data.escenas["0"].imagenes["25"].path}`*/
     }
-
     var imagen2 = checkImage(imagen);
-
-
     console.log(`la imagen q se va es ${imagen2}`)
-
-   
     return {
       props:{
         imagen:imagen2,
