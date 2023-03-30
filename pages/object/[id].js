@@ -79,6 +79,8 @@ export const getServerSideProps = async (context) => {
         request.open("GET", url, true);
         request.send();
         request.onload = function() {
+            console.log(imagen);
+            console.log(request.status);
             var status = request.status;
             if (request.status === 200) //if(statusText == OK)
             {
