@@ -8,8 +8,7 @@ import {console} from "next/dist/compiled/@edge-runtime/primitives/console";
 function VisualizadorVehiculo({imagen,nombre,info,info2}){
     const router = useRouter();
     let aux= info + " "+ info2;
-    console.log(imagen);
-    console.log(nombre);
+
 
     useEffect(() => {
         window.location.href = `https://3dmotores.com/visualizador/view/${router.query.id}`;
@@ -60,7 +59,7 @@ export const getServerSideProps = async (context) => {
        let aux2 =   `${data.escenas["0"].imagenes["25"].path}`.split("/")[1];
 
         imagen=`https://3dmotores.com/images/getimage?path=/${id}/${aux2}/preview/preview.jpg`;
-        console.log(imagen);
+
 
     } catch (error) {
       imagen = "https://i0.wp.com/learn.onemonth.com/wp-content/uploads/2017/08/1-10.png?fit=845%2C503&ssl=1"
@@ -85,11 +84,11 @@ export const getServerSideProps = async (context) => {
             if (request.status === 200) //if(statusText == OK)
             {
                 return url;
-            } else {
+            } if(request.status === 404){
                return  `https://3dmotores.com/images/getimage?path=/${id}/${data.escenas["0"].imagenes["25"].path}`
             }
         }
-        return "";
+        return  `https://3dmotores.com/images/getimage?path=/${id}/${data.escenas["0"].imagenes["25"].path}`
     }
 
     imagen = checkImage(imagen);
