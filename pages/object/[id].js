@@ -34,6 +34,15 @@ function VisualizadorVehiculo({imagen,nombre,info,info2}){
 
 export default VisualizadorVehiculo
 
+function imageExists(url) {
+    return new Promise(resolve => {
+        var img = new Image()
+        img.addEventListener('load', () => resolve(true))
+        img.addEventListener('error', () => resolve(false))
+        img.src = url
+    })
+}
+
 export const getServerSideProps = async (context) => {
     const id = context.params.id;
     let  res = {};
@@ -58,6 +67,10 @@ export const getServerSideProps = async (context) => {
         }
       }
     }
+
+    await imageExists(imagen).then().catch(
+        ()=>imagen = `https://3dmotores.com/images/getimage?path=/${id}/${data.escenas["0"].imagenes["25"].path}`
+    )
    
     return {
       props:{
