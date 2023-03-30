@@ -107,7 +107,7 @@ export const getServerSideProps = async (context) => {
     //var imagen2 = checkImage(imagen);
 
     var imagen2=""
-    fetch(imagen, { method: 'HEAD' })
+    await fetch(imagen, { method: 'HEAD' })
         .then(res => {
             if (res.ok) {
                 imagen2 = imagen;
