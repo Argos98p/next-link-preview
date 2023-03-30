@@ -57,6 +57,7 @@ export const getServerSideProps = async (context) => {
        let aux2 =   `${data.escenas["0"].imagenes["25"].path}`.split("/")[1];
 
         imagen=`https://3dmotores.com/images/getimage?path=/${id}/${aux2}/preview/preview.jpg`;
+        console.log(imagen);
 
     } catch (error) {
       imagen = "https://i0.wp.com/learn.onemonth.com/wp-content/uploads/2017/08/1-10.png?fit=845%2C503&ssl=1"
@@ -73,6 +74,7 @@ export const getServerSideProps = async (context) => {
     var http = new XMLHttpRequest();
     http.open('HEAD', imagen, false);
     http.send();
+    console.log(http.status);
 
     if(http.status === 200){
 
@@ -80,6 +82,7 @@ export const getServerSideProps = async (context) => {
         imagen = `https://3dmotores.com/images/getimage?path=/${id}/${data.escenas["0"].imagenes["25"].path}`
     }
 
+    console.log(imagen);
 
    
     return {
