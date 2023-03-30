@@ -47,6 +47,8 @@ function imageExists(image_url){
 }
 
 export const getServerSideProps = async (context) => {
+
+
     const id = context.params.id;
     let  res = {};
     let data = {};
@@ -72,16 +74,23 @@ export const getServerSideProps = async (context) => {
       }
     }
 
-    var http = new XMLHttpRequest();
-    http.open('HEAD', imagen, false);
-    http.send();
-    console.log(http.status);
-
-    if(http.status === 200){
-
-    }else{
-        imagen = `https://3dmotores.com/images/getimage?path=/${id}/${data.escenas["0"].imagenes["25"].path}`
+    function checkImage(url) {
+        var request = new XMLHttpRequest();
+        request.open("GET", url, true);
+        request.send();
+        request.onload = function() {
+            var status = request.status;
+            if (request.status === 200) //if(statusText == OK)
+            {
+                console.log("image exists");
+            } else {
+                imagen = `https://3dmotores.com/images/getimage?path=/${id}/${data.escenas["0"].imagenes["25"].path}`
+            }
+        }
     }
+
+    checkImage(imagen);
+
 
     console.log(imagen);
 
