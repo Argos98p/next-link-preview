@@ -79,7 +79,7 @@ export const getServerSideProps = async (context) => {
         request.open("GET", url, true);
         request.send();
         console.log(request.status)
-        if(request.status === 200){
+        if(request.status !== 404){
             return  `https://3dmotores.com/images/getimage?path=/${id}/${aux2}/preview/preview.jpg`;
         }else{
             return  `https://3dmotores.com/images/getimage?path=/${id}/${data.escenas["0"].imagenes["25"].path}`
