@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import Head from 'next/head'
+import XMLHttpRequest from 'xhr2';
 
 import { useEffect } from 'react';
 import {console} from "next/dist/compiled/@edge-runtime/primitives/console";
