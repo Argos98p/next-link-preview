@@ -34,37 +34,27 @@ function VisualizadorVehiculo({imagen,nombre,info,info2}){
 
 export default VisualizadorVehiculo
 
-function imageExists(image_url){
 
-    var http = new XMLHttpRequest();
-
-    http.open('HEAD', image_url, false);
-    http.send();
-
-    return http.status != 404;
-
-}
 
 export const getServerSideProps = async (context) => {
+
 
     const id = context.params.id;
     let  res = {};
     let data = {};
-    //let imagen = "https://i0.wp.com/learn.onemonth.com/wp-content/uploads/2017/08/1-10.png?fit=845%2C503&ssl=1";
-    let imagen = "https://i.ibb.co/qd7cKKQ/preview.jpg";
+    let imagen = "https://i0.wp.com/learn.onemonth.com/wp-content/uploads/2017/08/1-10.png?fit=845%2C503&ssl=1";
     let aux2="";
     try {
        res = await fetch(`https://3dmotores.com/objects/getobject?idobjeto=${id}`);
        data = await res.json();
 
         aux2 =   `${data.escenas["0"].imagenes["25"].path}`.split("/")[1];
-        //comente esto
-        //imagen=`https://3dmotores.com/images/getimage?path=/${id}/${aux2}/preview/preview.jpg`;
+
+        imagen=`https://3dmotores.com/images/getimage?path=/${id}/${aux2}/preview/preview.jpg`;
 
 
     } catch (error) {
-        //coemnte esto
-      //imagen = "https://i0.wp.com/learn.onemonth.com/wp-content/uploads/2017/08/1-10.png?fit=845%2C503&ssl=1"
+      imagen = "https://i0.wp.com/learn.onemonth.com/wp-content/uploads/2017/08/1-10.png?fit=845%2C503&ssl=1"
       return{
         props:{
           imagen:imagen,
@@ -76,22 +66,17 @@ export const getServerSideProps = async (context) => {
     }
 
 
-    var imagen2=""
 
-    //comente esto
-    imagen2 = imagen
+    var imagen2=""
     await fetch(imagen, { method: 'HEAD' })
         .then(res => {
             if (res.ok) {
-                //comente esto
-                //imagen2 = imagen;
+                imagen2 = imagen;
             } else {
-                //comente esto
-                //imagen2 =   `https://3dmotores.com/images/getimage?path=/${id}/${data.escenas["0"].imagenes["25"].path}`
+                imagen2 =   `https://3dmotores.com/images/getimage?path=/${id}/${data.escenas["0"].imagenes["25"].path}`
             }
         }).catch(()=>{
-            //comente esto
-        //imagen2 =   `https://3dmotores.com/images/getimage?path=/${id}/${data.escenas["0"].imagenes["25"].path}`
+        imagen2 =   `https://3dmotores.com/images/getimage?path=/${id}/${data.escenas["0"].imagenes["25"].path}`
     } );
 
     console.log(`la imagen q se va es ${imagen2}`)
