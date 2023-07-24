@@ -50,7 +50,7 @@ export const getServerSideProps = async (context) => {
 
         aux2 =   `${data.escenas["0"].imagenes["25"].path}`.split("/")[1];
 
-        imagen=`https://3dmotores.com/images/getimage?path=/${id}/${aux2}/preview/preview.jpg`;
+        imagen=`https://3dmotores.com/ObjetosVirtuales/${id}/${aux2}/preview/preview.jpg`;
 
 
     } catch (error) {
