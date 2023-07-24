@@ -73,10 +73,10 @@ export const getServerSideProps = async (context) => {
             if (res.ok) {
                 imagen2 = imagen;
             } else {
-                imagen2 =   `https://3dmotores.com/images/getimage?path=/${id}/${data.escenas["0"].imagenes["25"].path}`
+                imagen2 =   `https://3dmotores.com/ObjetosVirtuales/${id}/${data.escenas["0"].imagenes["25"].path}`
             }
         }).catch(()=>{
-        imagen2 =   `https://3dmotores.com/images/getimage?path=/${id}/${data.escenas["0"].imagenes["25"].path}`
+        imagen2 =   `https://3dmotores.com/ObjetosVirtuales/${id}/${data.escenas["0"].imagenes["25"].path}`
     } );
 
     console.log(`la imagen q se va es ${imagen2}`)
