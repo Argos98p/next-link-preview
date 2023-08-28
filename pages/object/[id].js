@@ -48,7 +48,7 @@ export const getServerSideProps = async (context) => {
        res = await fetch(`https://3dmotores.com/objects/getobject?idobjeto=${id}`);
        data = await res.json();
 
-        aux2 =   `${data.escenas["0"].imagenes["25"].path}`.split("/")[1];
+        aux2 =   `${data.escenas["1"].imagenes["25"].path}`.split("/")[1];
 
         imagen=`https://3dmotores.com/ObjetosVirtuales/${id}/${aux2}/preview/preview.jpg`;
 
@@ -73,13 +73,12 @@ export const getServerSideProps = async (context) => {
             if (res.ok) {
                 imagen2 = imagen;
             } else {
-                imagen2 =   `https://3dmotores.com/ObjetosVirtuales/${id}/${data.escenas["0"].imagenes["25"].path}`
+                imagen2 =   `https://3dmotores.com/ObjetosVirtuales/${id}/${data.escenas["1"].imagenes["25"].path}`
             }
         }).catch(()=>{
-        imagen2 =   `https://3dmotores.com/ObjetosVirtuales/${id}/${data.escenas["0"].imagenes["25"].path}`
+        imagen2 =   `https://3dmotores.com/ObjetosVirtuales/${id}/${data.escenas["1"].imagenes["25"].path}`
     } );
 
-    console.log(`la imagen q se va es ${imagen2}`)
     return {
       props:{
         imagen:imagen2,
