@@ -11,7 +11,7 @@ function VisualizadorVehiculo({imagen,nombre,info,info2}){
 
 
     useEffect(() => {
-        window.location.href = `https://3dmotores.com/visualizador/view/${router.query.id}`;
+        window.location.href = `https://3dmotores.com/visualizador/${router.query.id}`;
       }, []);
     
     return (
